@@ -1,10 +1,10 @@
 // get the data from localstorage
 const getBidFromLocalstorage = () => {
-  const bookMarkedBlogs = localStorage.getItem("Bookmarked");
+  const favBids = localStorage.getItem("Favourite");
 
-  if (bookMarkedBlogs) {
-    const storeBlog = JSON.parse(bookMarkedBlogs);
-    return storeBlog;
+  if (favBids) {
+    const storeBid = JSON.parse(favBids);
+    return storeBid;
   }
 
   return [];
@@ -12,23 +12,23 @@ const getBidFromLocalstorage = () => {
 
 // save data in localstorage
 
-const saveBidInLocalstorage = (Bookmarked) => {
-  const bookmarkedString = JSON.stringify(Bookmarked);
-  localStorage.setItem("Bookmarked", bookmarkedString);
+const saveBidInLocalstorage = (Favourite) => {
+  const FavouriteString = JSON.stringify(Favourite);
+  localStorage.setItem("Favourite", FavouriteString);
 };
 
 // remove from local storage
 const removeBidFromLocalstorage = (id) => {
-  const storeBlog = getBidFromLocalstorage();
-  const remaining = storeBlog.filter((storeId) => storeId != id);
+  const storeBid = getBidFromLocalstorage();
+  const remaining = storeBid.filter((storeId) => storeId != id);
   saveCartToLocalstorage(remaining);
 };
 
 // add to localstorage
 const addBidToLocalstorage = (id) => {
-  const bookmarkedBlogs = getBidFromLocalstorage();
-  const newBlogs = [...bookmarkedBlogs, id];
-  saveBidInLocalstorage(newBlogs);
+  const favouriteBlogs = getBidFromLocalstorage();
+  const newBids = [...favouriteBlogs, id];
+  saveBidInLocalstorage(newBids);
 };
 
 export {

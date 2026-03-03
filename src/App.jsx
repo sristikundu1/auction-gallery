@@ -6,15 +6,19 @@ import Products from "./Components/Products/Products";
 import { Suspense, useState } from "react";
 import FavProduct from "./Components/FavProduct/FavProduct";
 import { FaRegHeart } from "react-icons/fa6";
-import { removeBidFromLocalstorage } from "./Components/utils/Localstorage";
+import {
+  addBidToLocalstorage,
+  getBidFromLocalstorage,
+  removeBidFromLocalstorage,
+} from "./Components/utils/Localstorage";
 
 const bidPromises = fetch("BidData.json").then((res) => res.json());
 function App() {
   const [favBid, setFavBids] = useState([]);
-  const [totalBidAmount, setTotalBidAmount] = useState(0);
+  // const [totalBidAmount, setTotalBidAmount] = useState(0);
 
   const handleClickBids = (bid) => {
-    toast("Wow so easy!", {
+    toast("Bid Added to the list!", {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -28,11 +32,30 @@ function App() {
     const newFavBid = [...favBid, bid];
     setFavBids(newFavBid);
 
+    // Store bid id in localStorage
+    addBidToLocalstorage(bid.id);
+
     updateTotal(bid.currentBidPrice);
   };
 
+  //  Get favourite Bid IDs from localStorage
+  const storedBidsIds = getBidFromLocalstorage();
+
+  // Filter bid to show only fav bid
+  const FavouriteBid = favBid.filter((bid) => storedBidsIds.includes(bid.id));
+
   // remove bid from favourite item
   const handleRemoveBid = (id) => {
+    toast("Bid removed from the list!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
     // remove from ui and localstorage
     const remainingBid = favBid.filter((bid) => bid.id != id);
     setFavBids(remainingBid);
@@ -40,9 +63,14 @@ function App() {
   };
 
   // total bid amount count
-  const updateTotal = (amount) => {
-    setTotalBidAmount(totalBidAmount + amount);
-  };
+  let totalBidAmount = 0;
+
+  for (let i = 0; i < FavouriteBid.length; i++) {
+    totalBidAmount += FavouriteBid[i].currentBidPrice;
+  }
+  // const updateTotal = (amount) => {
+  //   setTotalBidAmount(totalBidAmount + amount);
+  // };
 
   return (
     <>
@@ -80,9 +108,8 @@ function App() {
                   Favorite Items
                 </h2>
               </div>
-
               <div>
-                {favBid.length === 0 ? (
+                {FavouriteBid.length === 0 ? (
                   <div className="bg-white p-5 rounded-2xl">
                     <div className="text-center py-4">
                       <h1 className="text-black text-lg font-medium">
@@ -95,7 +122,7 @@ function App() {
                     </div>
                   </div>
                 ) : (
-                  favBid.map((fbid) => (
+                  FavouriteBid.map((fbid) => (
                     <FavProduct
                       key={fbid.id}
                       fbid={fbid}
@@ -104,11 +131,17 @@ function App() {
                   ))
                 )}
               </div>
+              <ToastContainer />
               <div className="flex justify-between text-black text-lg font-semibold">
                 <h1>Total bids Amount</h1>
                 <p>
-                  ${" "}
-                  <span>{totalBidAmount === 0 ? "0000" : totalBidAmount}</span>
+                  $
+                  <span>
+                    {FavouriteBid.length === 0
+                      ? "0000"
+                      : totalBidAmount.toLocaleString()}
+                    {/* {totalBidAmount === 0 ? "0000" : totalBidAmount} */}
+                  </span>
                 </p>
               </div>
             </div>

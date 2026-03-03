@@ -21,7 +21,7 @@ const FavProduct = ({ fbid, handleRemoveBid }) => {
                 ${currentBidPrice}
               </p>
               <p className="text-[rgba(14,41,84,1)] text-sm font-normal leading-5">
-                Bids: {bidsCount}{" "}
+                Bids: {bidsCount}
               </p>
             </div>
           </div>
