@@ -1,18 +1,15 @@
 import React from "react";
 import { FaRegHeart } from "react-icons/fa6";
 
-const BidProduct = ({ bid }) => {
-  const { title, currentBidPrice, timeLeft } = bid;
+const BidProduct = ({ bid, handleClickBids }) => {
+  const { id, title, image, currentBidPrice, timeLeft } = bid;
   return (
     <tr className="border-b-amber-600">
       <td>
         <div className="flex items-center gap-3">
           <div className="avatar">
             <div className="mask  h-20 w-20">
-              <img
-                src="https://img.daisyui.com/images/profile/demo/2@94.webp"
-                alt={title}
-              />
+              <img src={image} alt={title} />
             </div>
           </div>
         </div>
@@ -29,7 +26,7 @@ const BidProduct = ({ bid }) => {
       </td>
 
       <td>
-        <button>
+        <button onClick={() => handleClickBids(bid)}>
           <FaRegHeart
             className="text-[#0E2954] text-lg font-semibold text-left"
             size={20}

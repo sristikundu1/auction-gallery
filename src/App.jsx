@@ -3,27 +3,32 @@ import Navbar from "./Components/Navbar/Navbar";
 import Banner from "./Components/Banner/Banner";
 import Footer from "./Components/Footer/Footer";
 import Products from "./Components/Products/Products";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
+import FavProduct from "./Components/FavProduct/FavProduct";
+import { FaRegHeart } from "react-icons/fa6";
 
 const bidPromises = fetch("BidData.json").then((res) => res.json());
 function App() {
-  //   const handleclick = () =>{
+  const [favBid, setFavBids] = useState([]);
 
-  // toast("Wow so easy!", {
-  // position: "top-right",
-  // autoClose: 5000,
-  // hideProgressBar: false,
-  // closeOnClick: false,
-  // pauseOnHover: true,
-  // draggable: true,
-  // progress: undefined,
-  // theme: "light"
-  // });
-  //   }
+  const handleClickBids = (bid) => {
+    toast("Wow so easy!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
+    const newFavBid = [...favBid, bid];
+    setFavBids(newFavBid);
+  };
 
   return (
     <>
-      {/* <ToastContainer/> */}
       <Navbar></Navbar>
       <Banner></Banner>
       <div className="bg-[#EBF0F5] py-32 px-20 grid grid-cols-4 gap-5">
@@ -38,11 +43,51 @@ function App() {
             </p>
             {/* left side table  */}
             <div>
-              <Products bidPromises={bidPromises}></Products>
+              <Products
+                bidPromises={bidPromises}
+                handleClickBids={handleClickBids}
+              ></Products>
+              <ToastContainer />;
             </div>
           </div>
           {/* Right side  */}
-          <div className="col-span-1"></div>
+          <div className="col-span-1">
+            <div className="bg-white p-5 mt-20 rounded-2xl">
+              <div className="mb-2">
+                <h2 className="flex justify-center items-center gap-4 text-[#0E2954] text-xl font-medium">
+                  <FaRegHeart
+                    className="text-[#0E2954] text-lg font-semibold text-left"
+                    size={20}
+                  />{" "}
+                  Favorite Items
+                </h2>
+              </div>
+
+              <div>
+                {favBid.length === 0 ? (
+                  <div className="bg-white p-5 rounded-2xl">
+                    <div className="text-center py-4">
+                      <h1 className="text-black text-lg font-medium">
+                        No favorites yet
+                      </h1>
+                      <p className="text-black text-sm font-normal opacity-80">
+                        Click the heart icon on any item to add it to your
+                        favorites
+                      </p>
+                    </div>
+                  </div>
+                ) : (
+                  favBid.map((fbid) => <FavProduct key={fbid.id} fbid={fbid} />)
+                )}
+              </div>
+              <div className="flex justify-between text-black text-lg font-normal">
+                <h1>Total bids Amount</h1>
+                <p>
+                  $ <span>0000</span>
+                </p>
+              </div>
+            </div>
+          </div>
         </Suspense>
       </div>
 
