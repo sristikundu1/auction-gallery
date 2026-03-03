@@ -1,7 +1,7 @@
 import React, { use } from "react";
 import BidProduct from "../BidProduct/BidProduct";
 
-const Products = ({ bidPromises, handleClickBids }) => {
+const Products = ({ bidPromises, handleClickBids, favBid }) => {
   const bidDatas = use(bidPromises);
 
   // console.log(bidDatas);
@@ -25,6 +25,7 @@ const Products = ({ bidPromises, handleClickBids }) => {
               key={bid.id}
               bid={bid}
               handleClickBids={handleClickBids}
+              isFaved={favBid.some((f) => f.id === bid.id)}
             ></BidProduct>
           ))}
         </tbody>

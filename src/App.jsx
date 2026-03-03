@@ -6,10 +6,12 @@ import Products from "./Components/Products/Products";
 import { Suspense, useState } from "react";
 import FavProduct from "./Components/FavProduct/FavProduct";
 import { FaRegHeart } from "react-icons/fa6";
+import { removeBidFromLocalstorage } from "./Components/utils/Localstorage";
 
 const bidPromises = fetch("BidData.json").then((res) => res.json());
 function App() {
   const [favBid, setFavBids] = useState([]);
+  const [totalBidAmount, setTotalBidAmount] = useState(0);
 
   const handleClickBids = (bid) => {
     toast("Wow so easy!", {
@@ -25,6 +27,21 @@ function App() {
 
     const newFavBid = [...favBid, bid];
     setFavBids(newFavBid);
+
+    updateTotal(bid.currentBidPrice);
+  };
+
+  // remove bid from favourite item
+  const handleRemoveBid = (id) => {
+    // remove from ui and localstorage
+    const remainingBid = favBid.filter((bid) => bid.id != id);
+    setFavBids(remainingBid);
+    removeBidFromLocalstorage(id);
+  };
+
+  // total bid amount count
+  const updateTotal = (amount) => {
+    setTotalBidAmount(totalBidAmount + amount);
   };
 
   return (
@@ -46,6 +63,7 @@ function App() {
               <Products
                 bidPromises={bidPromises}
                 handleClickBids={handleClickBids}
+                favBid={favBid}
               ></Products>
               <ToastContainer />;
             </div>
@@ -77,13 +95,20 @@ function App() {
                     </div>
                   </div>
                 ) : (
-                  favBid.map((fbid) => <FavProduct key={fbid.id} fbid={fbid} />)
+                  favBid.map((fbid) => (
+                    <FavProduct
+                      key={fbid.id}
+                      fbid={fbid}
+                      handleRemoveBid={handleRemoveBid}
+                    />
+                  ))
                 )}
               </div>
-              <div className="flex justify-between text-black text-lg font-normal">
+              <div className="flex justify-between text-black text-lg font-semibold">
                 <h1>Total bids Amount</h1>
                 <p>
-                  $ <span>0000</span>
+                  ${" "}
+                  <span>{totalBidAmount === 0 ? "0000" : totalBidAmount}</span>
                 </p>
               </div>
             </div>
