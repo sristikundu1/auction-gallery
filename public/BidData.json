@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "title": "1965 Gibson SG Standard Electric Guitar",
+    "description": "Vintage 1965 Gibson SG Standard in cherry red finish. Original pickups and hardware, well-maintained with minor wear from age.",
+    "currentBidPrice": 2850,
+    "timeLeft": "2 Days left"
+  },
+  {
+    "id": 2,
+    "title": "Original Apple Macintosh 128K (1984)",
+    "description": "First-generation Apple Macintosh 128K released in 1984. Fully functional with keyboard and mouse included.",
+    "currentBidPrice": 5200,
+    "timeLeft": "5 Days left"
+  },
+  {
+    "id": 3,
+    "title": "Rolex Submariner 16610",
+    "description": "Authentic Rolex Submariner 16610 with stainless steel case and black dial. Excellent condition with original box and papers.",
+    "currentBidPrice": 8900,
+    "timeLeft": "3 Days left"
+  },
+  {
+    "id": 4,
+    "title": "First Edition 'The Great Gatsby' by F. Scott Fitzgerald",
+    "description": "Rare 1925 first edition copy of The Great Gatsby. Original dust jacket in good condition with slight fading.",
+    "currentBidPrice": 15000,
+    "timeLeft": "6 Days left"
+  },
+  {
+    "id": 5,
+    "title": "Mid-Century Modern Eames Lounge Chair",
+    "description": "Authentic Eames Lounge Chair and Ottoman in walnut and black leather. Classic mid-century design.",
+    "currentBidPrice": 4200,
+    "timeLeft": "4 Days left"
+  },
+  {
+    "id": 6,
+    "title": "Banksy Original Screen Print",
+    "description": "Limited edition original screen print by Banksy. Signed and numbered with certificate of authenticity.",
+    "currentBidPrice": 22000,
+    "timeLeft": "1 Day left"
+  },
+  {
+    "id": 7,
+    "title": "Vintage Leica M3 Camera",
+    "description": "Classic Leica M3 35mm rangefinder camera from the 1950s. Fully operational with original lens included.",
+    "currentBidPrice": 3400,
+    "timeLeft": "7 Days left"
+  },
+  {
+    "id": 8,
+    "title": "1967 Ford Mustang Fastback",
+    "description": "Restored 1967 Ford Mustang Fastback with V8 engine. Excellent exterior and interior condition.",
+    "currentBidPrice": 27500,
+    "timeLeft": "8 Days left"
+  },
+  {
+    "id": 9,
+    "title": "Omega Speedmaster Professional Moonwatch",
+    "description": "Iconic Omega Speedmaster Professional Moonwatch. Stainless steel bracelet with original packaging.",
+    "currentBidPrice": 6300,
+    "timeLeft": "2 Days left"
+  },
+  {
+    "id": 10,
+    "title": "Signed Michael Jordan Rookie Card (1986)",
+    "description": "1986 Fleer Michael Jordan rookie card, autographed and graded. Highly collectible sports memorabilia.",
+    "currentBidPrice": 48000,
+    "timeLeft": "9 Days left"
+  }
+]
