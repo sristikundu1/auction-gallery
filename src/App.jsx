@@ -15,9 +15,9 @@ import {
 const bidPromises = fetch("BidData.json").then((res) => res.json());
 function App() {
   const [favBid, setFavBids] = useState([]);
-  // const [totalBidAmount, setTotalBidAmount] = useState(0);
 
   const handleClickBids = (bid) => {
+    // toast alert
     toast("Bid Added to the list!", {
       position: "top-right",
       autoClose: 5000,
@@ -46,6 +46,7 @@ function App() {
 
   // remove bid from favourite item
   const handleRemoveBid = (id) => {
+    // toast alert
     toast("Bid removed from the list!", {
       position: "top-right",
       autoClose: 5000,
@@ -68,18 +69,15 @@ function App() {
   for (let i = 0; i < FavouriteBid.length; i++) {
     totalBidAmount += FavouriteBid[i].currentBidPrice;
   }
-  // const updateTotal = (amount) => {
-  //   setTotalBidAmount(totalBidAmount + amount);
-  // };
 
   return (
     <>
       <Navbar></Navbar>
       <Banner></Banner>
-      <div className="bg-[#EBF0F5] py-32 px-20 grid grid-cols-4 gap-5">
+      <div className="bg-[#EBF0F5] py-32 px-3 md:px-20 grid grid-cols-1 md:grid-cols-4 gap-5">
         <Suspense fallback={<h1>Bid Data are loading...........</h1>}>
           {/* left Side  */}
-          <div className="col-span-3">
+          <div className="md:col-span-3">
             <h1 className="text-[#0E2954] text-2xl font-medium text-left">
               Active Auctions
             </h1>
@@ -93,11 +91,11 @@ function App() {
                 handleClickBids={handleClickBids}
                 favBid={favBid}
               ></Products>
-              <ToastContainer />;
             </div>
           </div>
+
           {/* Right side  */}
-          <div className="col-span-1">
+          <div className=" md:col-span-1">
             <div className="bg-white p-5 mt-20 rounded-2xl">
               <div className="mb-2">
                 <h2 className="flex justify-center items-center gap-4 text-[#0E2954] text-xl font-medium">
@@ -137,10 +135,7 @@ function App() {
                 <p>
                   $
                   <span>
-                    {FavouriteBid.length === 0
-                      ? "0000"
-                      : totalBidAmount.toLocaleString()}
-                    {/* {totalBidAmount === 0 ? "0000" : totalBidAmount} */}
+                    {FavouriteBid.length === 0 ? "0000" : totalBidAmount}
                   </span>
                 </p>
               </div>

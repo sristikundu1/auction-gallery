@@ -7,7 +7,7 @@ const Products = ({ bidPromises, handleClickBids, favBid }) => {
   // console.log(bidDatas);
   return (
     <div className="overflow-x-auto rounded-2xl bg-white p-4">
-      <table className="table">
+      <table className="table ">
         <thead className="text-sm text-black font-normal text-left">
           <tr>
             <th>Items</th>
