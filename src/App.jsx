@@ -132,6 +132,8 @@ function App() {
               <ToastContainer />
               <div className="flex justify-between text-black text-lg font-semibold">
                 <h1>Total bids Amount</h1>
+
+                {/* Tota amount price  */}
                 <p>
                   $
                   <span>

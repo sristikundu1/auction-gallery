@@ -1,16 +1,68 @@
-# React + Vite
+# 🛒 Auction / Bidding Web Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Project Description
 
-Currently, two official plugins are available:
+This is a React-based auction web application where users can:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- View available bid products
+- Add items to their favorites
+- Remove items from favorites
+- See total bid amount update dynamically
+- Persist favorite items using LocalStorage
+- Receive toast notifications for user actions
 
-## React Compiler
+The total bid amount updates automatically when products are added or removed.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🚀 Live Link
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🔗 Live Site: https://auction-gallery-bid-site.netlify.app/
+
+---
+
+## 🚀 Features
+
+- ❤️ Add to Favorite
+- ❌ Remove from Favorites
+- 💰 Dynamic Total Bid Calculation
+- 🔔 Toast Notifications (Add & Remove)
+- 💾 LocalStorage Integration
+- 🖱 Disabled Favorite Button After Click
+- 🔄 Real-time UI Update
+- 📱 Responsive Design (Tailwind CSS)
+
+---
+
+## 🛠 Technologies Used
+
+- React.js
+- JavaScript (ES6)
+- Tailwind CSS
+- React Icons
+- React Toastify
+- LocalStorage API
+
+---
+
+## 🧠 What I Learned
+
+- React state management
+- Derived state vs stored state
+- Conditional rendering
+- Array methods (map, filter)
+- Handling dynamic UI updates
+- LocalStorage data persistence
+- Component communication via props
+- Preventing duplicate favorites
+- UI/UX improvement techniques
+
+---
+
+## 🎯 Future Improvements
+
+- Toggle favorite functionality
+- User authentication
+- Real bidding system with backend
+- Database integration
+- Animated UI transitions
